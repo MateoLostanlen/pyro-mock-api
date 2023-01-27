@@ -30,7 +30,7 @@ def read_root():
 @app.put("/device/heartbeat/{device_id}")
 def heartbeat(device_id: int):
 
-    with open(f"data/heartbeat/{device_id}.txt", "a") as f:
+    with open(f"data/heartbeat/{convertFromNumber(int(device_id))}.txt", "a") as f:
         f.write(str(datetime.utcnow()) + "\n")
     return {"device_id": device_id}
 
