@@ -42,7 +42,7 @@ def create_media_from_device(device_id: int):
     media_id = len(df)
     new_row = pd.DataFrame(
         {
-            "device_id": device_id,
+            "device_id": convertFromNumber(int(device_id)),
             "media_id": media_id,
             "is_alert": 0,
             "file_path": None,
