@@ -59,7 +59,7 @@ def create_media_from_device(device_id: int):
 def send_alert_from_device(media_id: int):
 
     df = pd.read_csv("data/data.csv", index_col=0)
-    df.at[0,"is_alert"]=1
+    df.at[media_id,"is_alert"]=1
     df.to_csv("data/data.csv")
     return {"id": media_id}
 
@@ -77,7 +77,6 @@ def upload_media(
     os.makedirs(f"data/medias/{device_id}", exist_ok=True)
     file_path = f"data/medias/{device_id}/{str(row['media_id']).zfill(8)}.jpg"
     im.save(file_path)
-    row["file_path"] = file_path
-    df.iloc[media_id] = row
+    df.at[media_id,"file_path"]=file_path
     df.to_csv("data/data.csv")
     return {"id": media_id}
