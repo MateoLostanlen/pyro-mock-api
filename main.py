@@ -72,7 +72,7 @@ def upload_media(
 
     df = pd.read_csv("data/data.csv", index_col=0)
     row = df.iloc[media_id]
-    device_id = convertFromNumber(int(row["device_id"]))
+    device_id = row["device_id"]
     im = Image.open(BytesIO(file.file.read()))
     os.makedirs(f"data/medias/{device_id}", exist_ok=True)
     file_path = f"data/medias/{device_id}/{str(row['media_id']).zfill(8)}.jpg"
