@@ -59,9 +59,7 @@ def create_media_from_device(device_id: int):
 def send_alert_from_device(media_id: int):
 
     df = pd.read_csv("data/data.csv", index_col=0)
-    row = df.iloc[media_id]
-    row["is_alert"] = 1
-    df.iloc[media_id] = row
+    df.at[0,"is_alert"]=1
     df.to_csv("data/data.csv")
     return {"id": media_id}
 
